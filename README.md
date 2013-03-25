@@ -11,3 +11,5 @@ $secret = 'my-secret-key';
 echo new \Thumbor\Url($original, $commands, $server, $secret);
 // => http://thumbor.example.com:1234/mYdVBN25gyqUGD3QRsI9_rl1IxQ=/fit-in/640x480/filters:fill(green)/http%3A%2F%2Fimages.example.com%2Fllamas.jpg
 ```
+
+ [1]: https://github.com/globocom/thumbor
