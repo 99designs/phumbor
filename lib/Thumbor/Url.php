@@ -32,6 +32,7 @@ class Url
 	 */
 	public function stringify($original, $commands, $server, $secret=null)
 	{
+		$original = urlencode($original);
 		$commandPath = implode('/', $commands);
 		$signature = $secret ? $this->sign($commandPath.'/'.$original, $secret) : 'unsafe';
 
@@ -39,7 +40,7 @@ class Url
 			$server,
 			$signature,
 			$commandPath,
-			urlencode($original)
+			$original
 		);
 	}
 
