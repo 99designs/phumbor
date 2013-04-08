@@ -5,7 +5,7 @@ Usage:
 $original = 'http://images.example.com/llamas.jpg';
 $commands = array('fit-in', '640x480', 'filters:fill(green)');
 
-$server = 'http://thumbor.example.com:1234/';
+$server = 'http://thumbor.example.com:1234';
 $secret = 'my-secret-key';
 
 echo new \Thumbor\Url($original, $commands, $server, $secret);
