@@ -27,7 +27,8 @@ class Url
 	 *
 	 * @param string $original URL of original image
 	 * @param array  $commands array of Thumbor commands
-	 * @param array  $options  optional settings
+	 * @param string $server   Thumbor server
+	 * @param string $secret   shared secret key
 	 */
 	public function stringify($original, $commands, $server, $secret=null)
 	{
