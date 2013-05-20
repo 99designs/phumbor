@@ -34,9 +34,10 @@ class Url
     {
         $original = urlencode($original);
         $commandPath = implode('/', $commands);
-        $signature = $secret ? $this->sign($commandPath.'/'.$original, $secret) : 'unsafe';
+        $signature = $secret ? $this->sign("$commandPath/$original", $secret) : 'unsafe';
 
-        return sprintf('%s/%s/%s/%s',
+        return sprintf(
+            '%s/%s/%s/%s',
             $server,
             $signature,
             $commandPath,
