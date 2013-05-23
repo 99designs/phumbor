@@ -8,15 +8,17 @@ namespace Thumbor;
  */
 class Url
 {
+    private $server, $secret, $original, $commands;
+
     /**
      * See stringify()
      */
-    public function __construct($original, $commands, $server, $secret=null)
+    public function __construct($server, $secret, $original, $commands)
     {
-        $this->_original = $original;
-        $this->_commands = $commands;
-        $this->_server = $server;
-        $this->_secret = $secret;
+        $this->server = $server;
+        $this->secret = $secret;
+        $this->original = $original;
+        $this->commands = $commands;
     }
 
     /**
@@ -25,12 +27,12 @@ class Url
      *
      * See https://github.com/globocom/thumbor/wiki/Usage for available $commands.
      *
+     * @param string $server   Thumbor server
+     * @param string $secret   shared secret key (may be blank/null)
      * @param string $original URL of original image
      * @param array  $commands array of Thumbor commands
-     * @param string $server   Thumbor server
-     * @param string $secret   shared secret key
      */
-    public function stringify($original, $commands, $server, $secret=null)
+    public function stringify($server, $secret, $original, $commands)
     {
         $original = urlencode($original);
         $commandPath = implode('/', $commands);
@@ -65,10 +67,10 @@ class Url
     public function __toString()
     {
         return $this->stringify(
-            $this->_original,
-            $this->_commands,
-            $this->_server,
-            $this->_secret
+            $this->server,
+            $this->secret,
+            $this->original,
+            $this->commands
         );
     }
 }

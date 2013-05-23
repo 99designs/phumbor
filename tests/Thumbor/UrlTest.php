@@ -18,10 +18,10 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     public function testToString()
     {
         $url = new Url(
-            'my/big/image.jpg',
-            array('fit-in', '560x420', 'filters:fill(green)'),
             'http://thumbor-server:8888',
-            'MY_SECURE_KEY'
+            'MY_SECURE_KEY',
+            'my/big/image.jpg',
+            array('fit-in', '560x420', 'filters:fill(green)')
         );
 
         $this->assertEquals(
