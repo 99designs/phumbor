@@ -7,9 +7,9 @@ class UrlTest extends \PHPUnit_Framework_TestCase
     public function testSign()
     {
         $this->assertEquals(
-            'bDv76lTvUdX6vORS96scx7P185c=',
+            '-qITCsYPvj2Lt0ivIX1eXHhGFOM=',
             Url::sign(
-                'fit-in/560x420/filters:fill(green)/my/big/image.jpg',
+                'fit-in/560x420/filters:fill(green)/my%2Fbig%2Fimage.jpg',
                 'MY_SECURE_KEY'
             )
         );
@@ -25,7 +25,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(
-            'http://thumbor-server:8888/bDv76lTvUdX6vORS96scx7P185c=/fit-in/560x420/filters:fill(green)/my%2Fbig%2Fimage.jpg',
+            'http://thumbor-server:8888/-qITCsYPvj2Lt0ivIX1eXHhGFOM=/fit-in/560x420/filters:fill(green)/my%2Fbig%2Fimage.jpg',
             "$url"
         );
     }
