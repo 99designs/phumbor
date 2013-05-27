@@ -36,7 +36,7 @@ class Url
     {
         $original = urlencode($original);
         $commandPath = implode('/', $commands);
-        $signature = $secret ? $this->sign("$commandPath/$original", $secret) : 'unsafe';
+        $signature = $secret ? self::sign("$commandPath/$original", $secret) : 'unsafe';
 
         return sprintf(
             '%s/%s/%s/%s',
@@ -55,7 +55,7 @@ class Url
      * @param string $secret
      * @return string
      */
-    public function sign($msg, $secret)
+    public static function sign($msg, $secret)
     {
         $signature = hash_hmac("sha1", $msg, $secret, true);
         return strtr(
