@@ -2,6 +2,8 @@
 
 A minimal PHP client for generating [Thumbor][1] URLs.
 
+[![Build Status](https://travis-ci.org/99designs/phumbor.png)](https://travis-ci.org/99designs/phumbor)
+
 ## Usage
 
 You construct a `Thumbor\Url` using a `Thumbor\Url\Builder`:
@@ -27,12 +29,12 @@ echo $thumbnailUrlFactory
     ->fromUrl('http://images.example.com/llamas.jpg')
     ->fitIn(640, 480)
     ->addFilter('fill', 'green');
-    
+
 echo $thumbnailUrlFactory
     ->fromUrl('http://images.example.com/butts.png')
     ->crop(20, 20, 300, 300)
     ->valign('middle');
-    
+
 // etc
 ```
 
