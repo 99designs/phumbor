@@ -1,6 +1,10 @@
 {
     "name": "99designs/phumbor",
     "description": "A minimal Thumbor library for PHP",
+    "homepage": "https://github.com/99designs/phumbor",
+    "keywords": [
+        "php", "thumbor", "thumbnails", "99designs"
+    ],
     "license": "MIT",
     "authors": [
         {
