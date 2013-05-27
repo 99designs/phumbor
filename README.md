@@ -4,6 +4,7 @@ A minimal PHP client for generating [Thumbor][1] URLs.
 
 [![Build Status](https://travis-ci.org/99designs/phumbor.png)](https://travis-ci.org/99designs/phumbor)
 
+
 ## Usage
 
 You construct a `Thumbor\Url` using a `Thumbor\Url\Builder`:
@@ -38,9 +39,16 @@ echo $thumbnailUrlFactory
 // etc
 ```
 
+
+## Installation
+
+Add `99designs/phumbor` as a dependency in [`composer.json`][3].
+
+
 ## License
 
 MIT; see [`LICENSE`][2]
 
  [1]: https://github.com/globocom/thumbor
  [2]: https://github.com/99designs/phumbor/blob/master/LICENSE
+ [3]: https://getcomposer.org/
