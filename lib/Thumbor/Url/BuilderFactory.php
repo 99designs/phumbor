@@ -35,13 +35,8 @@ class BuilderFactory
         $this->secret = $secret;
     }
 
-    public function url()
+    public function url($original)
     {
-        return Builder::construct($this->server, $this->secret);
-    }
-
-    public function urlFrom($original)
-    {
-        return $this->url()->from($original);
+        return Builder::construct($this->server, $this->secret, $original);
     }
 }

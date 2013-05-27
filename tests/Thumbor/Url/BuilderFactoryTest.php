@@ -6,10 +6,14 @@ class BuilderFactoryTest extends \PHPUnit_Framework_TestCase
 {
     public function testUrl()
     {
-        $builder = BuilderFactory::construct('http://thumbor.example.com', 'butts')
-            ->url();
+        $server = 'http://thumbor.example.com';
+        $secret = 'butts';
+        $original = 'http://example.com/llamas.jpg';
 
-        $expected = Builder::construct('http://thumbor.example.com', 'butts');
+        $builder = BuilderFactory::construct($server, $secret)
+            ->url($original);
+
+        $expected = Builder::construct($server, $secret, $original);
 
         $this->assertEquals($expected, $builder);
     }

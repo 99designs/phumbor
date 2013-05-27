@@ -7,9 +7,10 @@ namespace Thumbor\Url;
  *
  * Example usage:
  *
- * Thumbor\UrlBuilder::construct('http://thumbor.example.com', 'secret')
- *     // Basic configuration
- *     ->from('http://images.example.com/llamas.jpg')
+ * $server = 'http://thumbor.example.com';
+ * $secret = 'my-secret-key';
+ *
+ * Thumbor\UrlBuilder::construct($server, $secret, 'http://images.example.com/llamas.jpg')
  *     // Apply commands
  *     ->fitIn(320, 240)
  *     // Add filters
@@ -30,22 +31,17 @@ class Builder
         $original,
         $commands;
 
-    public static function construct($server, $secret=null)
+    public static function construct($server, $secret, $original)
     {
-        return new self($server, $secret);
+        return new self($server, $secret, $original);
     }
 
-    public function __construct($server, $secret=null)
+    public function __construct($server, $secret, $original)
     {
         $this->server = $server;
         $this->secret = $secret;
-        $this->commands = new CommandSet();
-    }
-
-    public function from($original)
-    {
         $this->original = $original;
-        return $this;
+        $this->commands = new CommandSet();
     }
 
     // Proxy remaining method calls to CommandSet

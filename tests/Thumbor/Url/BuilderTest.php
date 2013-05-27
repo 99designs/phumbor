@@ -6,8 +6,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 {
     public function testBuild()
     {
-        $url = Builder::construct('http://thumbor.example.com', 'secret-butts')
-            ->from('http://example.com/llamas.jpg')
+        $url = Builder::construct('http://thumbor.example.com', 'butts', 'http://example.com/llamas.jpg')
             ->fitIn(320, 240)
             ->smartCrop(true)
             ->addFilter('brightness', 42)
@@ -15,7 +14,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
         $expected = new \Thumbor\Url(
             'http://thumbor.example.com',
-            'secret-butts',
+            'butts',
             'http://example.com/llamas.jpg',
             array(
                 'fit-in/320x240',
@@ -29,8 +28,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
     public function testToString()
     {
-        $url = (string) Builder::construct('http://thumbor.example.com', 'butts')
-            ->from('http://example.com/llamas.jpg')
+        $url = (string) Builder::construct('http://thumbor.example.com', 'butts', 'http://example.com/llamas.jpg')
             ->fitIn(320, 240)
             ->smartCrop(true)
             ->addFilter('brightness', 42);
