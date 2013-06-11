@@ -13,8 +13,7 @@ You construct a `Thumbor\Url` using a `Thumbor\Url\Builder`:
 $server = 'http://thumbor.example.com:1234';
 $secret = 'my-secret-key';
 
-echo Thumbor\Url\Builder::construct($server, $secret)
-    ->from('http://images.example.com/llamas.jpg')
+echo Thumbor\Url\Builder::construct($server, $secret, 'http://images.example.com/llamas.jpg')
     ->fitIn(640, 480)
     ->addFilter('fill', 'green');
 
@@ -27,12 +26,12 @@ To reuse your server/secret combination, create a `Thumbor\Url\BuilderFactory`:
 $thumbnailUrlFactory = Thumbor\Url\BuilderFactory::construct($server, $secret);
 
 echo $thumbnailUrlFactory
-    ->fromUrl('http://images.example.com/llamas.jpg')
+    ->url('http://images.example.com/llamas.jpg')
     ->fitIn(640, 480)
     ->addFilter('fill', 'green');
 
 echo $thumbnailUrlFactory
-    ->fromUrl('http://images.example.com/butts.png')
+    ->url('http://images.example.com/butts.png')
     ->crop(20, 20, 300, 300)
     ->valign('middle');
 
