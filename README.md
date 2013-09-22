@@ -43,7 +43,7 @@ echo $thumbnailUrlFactory
 
 Add `99designs/phumbor` as a dependency in [`composer.json`][3].
 
-A [Laravel 4 package](https://github.com/ceejayoz/laravel-phumbor) is available.
+A [Laravel 4 package][4] is available.
 
 ## License
 
@@ -52,3 +52,4 @@ MIT; see [`LICENSE`][2]
  [1]: https://github.com/globocom/thumbor
  [2]: https://github.com/99designs/phumbor/blob/master/LICENSE
  [3]: https://getcomposer.org/
+ [4]: https://github.com/ceejayoz/laravel-phumbor
