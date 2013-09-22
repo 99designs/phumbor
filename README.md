@@ -45,6 +45,7 @@ Add `99designs/phumbor` as a dependency in [`composer.json`][3].
 
 A [Laravel 4 package][4] is available.
 
+
 ## License
 
 MIT; see [`LICENSE`][2]
