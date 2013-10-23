@@ -105,7 +105,7 @@ class CommandSetTest extends \PHPUnit_Framework_TestCase
         $commandSet = new CommandSet();
         $commandSet->metadataOnly(true);
         $this->assertEquals(
-            array('metadata'),
+            array('meta'),
             $commandSet->toArray()
         );
     }
