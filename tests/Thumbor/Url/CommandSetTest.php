@@ -107,7 +107,7 @@ class CommandSetTest extends TestCase
         $commandSet = new CommandSet();
         $commandSet->metadataOnly(true);
         $this->assertEquals(
-            array('metadata'),
+            array('meta'),
             $commandSet->toArray()
         );
     }

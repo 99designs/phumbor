@@ -117,6 +117,10 @@ class CommandSet
             if ($command) $commands []= (string) $command;
         };
 
+        if ($this->metadataOnly) {
+            $commands []= 'meta';
+        }
+
         $maybeAppend($this->trim);
         $maybeAppend($this->crop);
         $maybeAppend($this->resize);
@@ -130,10 +134,6 @@ class CommandSet
         if (count($this->filters)) {
             $filters = 'filters:' . implode(':', $this->filters);
             $commands []= $filters;
-        }
-
-        if ($this->metadataOnly) {
-            $commands []= 'metadata';
         }
 
         return $commands;
