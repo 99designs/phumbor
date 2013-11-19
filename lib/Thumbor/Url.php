@@ -8,7 +8,10 @@ namespace Thumbor;
  */
 class Url
 {
-    private $server, $secret, $original, $commands;
+    private $server;
+    private $secret;
+    private $original;
+    private $commands;
 
     /**
      * See stringify()

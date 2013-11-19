@@ -2,7 +2,9 @@
 
 namespace Thumbor\Url;
 
-class BuilderFactoryTest extends \PHPUnit_Framework_TestCase
+use PHPUnit_Framework_TestCase as TestCase;
+
+class BuilderFactoryTest extends TestCase
 {
     public function testUrl()
     {

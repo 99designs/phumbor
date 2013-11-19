@@ -2,7 +2,10 @@
 
 namespace Thumbor\Url;
 
-class BuilderTest extends \PHPUnit_Framework_TestCase
+use PHPUnit_Framework_TestCase as TestCase;
+use Thumbor\Url;
+
+class BuilderTest extends TestCase
 {
     public function testBuild()
     {
@@ -12,7 +15,7 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
             ->addFilter('brightness', 42)
             ->build();
 
-        $expected = new \Thumbor\Url(
+        $expected = new Url(
             'http://thumbor.example.com',
             'butts',
             'http://example.com/llamas.jpg',

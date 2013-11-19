@@ -2,7 +2,9 @@
 
 namespace Thumbor;
 
-class UrlTest extends \PHPUnit_Framework_TestCase
+use PHPUnit_Framework_TestCase as TestCase;
+
+class UrlTest extends TestCase
 {
     public function testSign()
     {

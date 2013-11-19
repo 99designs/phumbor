@@ -2,7 +2,9 @@
 
 namespace Thumbor\Url;
 
-class CommandSetTest extends \PHPUnit_Framework_TestCase
+use PHPUnit_Framework_TestCase as TestCase;
+
+class CommandSetTest extends TestCase
 {
     public function testDefaults()
     {

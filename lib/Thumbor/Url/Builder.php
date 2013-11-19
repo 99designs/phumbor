@@ -2,6 +2,9 @@
 
 namespace Thumbor\Url;
 
+use Exception;
+use Thumbor\Url;
+
 /**
  * A Builder for incrementally constructing Url objects.
  *
@@ -25,11 +28,10 @@ namespace Thumbor\Url;
  */
 class Builder
 {
-    private
-        $server,
-        $secret,
-        $original,
-        $commands;
+    private $server;
+    private $secret;
+    private $original;
+    private $commands;
 
     public static function construct($server, $secret, $original)
     {
@@ -48,20 +50,20 @@ class Builder
     public function __call($method, $args)
     {
         $proxied = array($this->commands, $method);
-        if (!is_callable($proxied))
-            throw new \Exception(sprintf(
+        if (!is_callable($proxied)) {
+            throw new Exception(sprintf(
                 'Method "%s" not found for %s',
                 $method,
                 get_class($this->commands)
             ));
-
+        }
         call_user_func_array($proxied, $args);
         return $this;
     }
 
     public function build()
     {
-        return new \Thumbor\Url(
+        return new Url(
             $this->server,
             $this->secret,
             $this->original,
