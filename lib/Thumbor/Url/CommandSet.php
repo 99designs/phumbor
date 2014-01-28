@@ -93,7 +93,7 @@ class CommandSet
     {
         $args = func_get_args();
         $filter = array_shift($args);
-        $this->filters []= sprintf('%s(%s)', $filter, implode(', ', $args));
+        $this->filters []= sprintf('%s(%s)', $filter, implode(',', $args));
     }
 
     /**
