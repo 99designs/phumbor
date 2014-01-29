@@ -97,7 +97,7 @@ class CommandSetTest extends TestCase
         $commandSet->addFilter('bar', 'baz');
         $commandSet->addFilter('bla', 'quux', 42);
         $this->assertEquals(
-            array('filters:foo():bar(baz):bla(quux, 42)'),
+            array('filters:foo():bar(baz):bla(quux,42)'),
             $commandSet->toArray()
         );
     }
