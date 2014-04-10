@@ -37,7 +37,6 @@ class Url
      */
     public function stringify($server, $secret, $original, $commands)
     {
-        $original = rawurlencode($original);
         $commandPath = implode('/', $commands);
         $signature = $secret ? self::sign("$commandPath/$original", $secret) : 'unsafe';
 
