@@ -17,7 +17,7 @@ echo Thumbor\Url\Builder::construct($server, $secret, 'http://images.example.com
     ->fitIn(640, 480)
     ->addFilter('fill', 'green');
 
-// => http://thumbor.example.com:1234/mYdVBN25gyqUGD3QRsI9_rl1IxQ=/fit-in/640x480/filters:fill(green)/http%3A%2F%2Fimages.example.com%2Fllamas.jpg
+// => http://thumbor.example.com:1234/OFDRoURwi9WVbZNfeOJVfIKr1Js=/fit-in/640x480/filters:fill(green)/http://images/example.com/llamas.jpg
 ```
 
 To reuse your server/secret combination, create a `Thumbor\Url\BuilderFactory`:
