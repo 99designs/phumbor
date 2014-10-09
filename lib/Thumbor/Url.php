@@ -38,14 +38,15 @@ class Url
     public function stringify($server, $secret, $original, $commands)
     {
         $commandPath = implode('/', $commands);
-        $signature = $secret ? self::sign("$commandPath/$original", $secret) : 'unsafe';
+        $encoded = urlencode(urldecode($original));
+        $signature = $secret ? self::sign("$commandPath/$encoded", $secret) : 'unsafe';
 
         return sprintf(
             '%s/%s/%s/%s',
             $server,
             $signature,
             $commandPath,
-            $original
+            $encoded
         );
     }
 
