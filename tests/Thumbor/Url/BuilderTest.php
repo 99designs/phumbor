@@ -36,7 +36,7 @@ class BuilderTest extends TestCase
             ->smartCrop(true)
             ->addFilter('brightness', 42);
 
-        $expected = 'http://thumbor.example.com/dgzk7MVde2RUq5Hbq40FvfRdno0=/fit-in/320x240/smart/filters:brightness(42)/http://example.com/llamas.jpg';
+        $expected = 'http://thumbor.example.com/y8O2zwNvj1D6rv1qpaHTUiZjgG0=/fit-in/320x240/smart/filters:brightness(42)/http%3A%2F%2Fexample.com%2Fllamas.jpg';
 
         $this->assertEquals($expected, $url);
     }
