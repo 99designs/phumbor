@@ -31,4 +31,19 @@ class UrlTest extends TestCase
             "$url"
         );
     }
+
+    public function testToStringWithoutCommand()
+    {
+        $url = new Url(
+            'http://thumbor-server:8888',
+            'MY_SECURE_KEY',
+            'my/big/image.jpg',
+            array()
+        );
+
+        $this->assertEquals(
+            'http://thumbor-server:8888/V2bYe7DAKqngbtv2GFxCcllDYWw=/my/big/image.jpg',
+            "$url"
+        );
+    }
 }
