@@ -37,15 +37,20 @@ class Url
      */
     public function stringify($server, $secret, $original, $commands)
     {
-        $commandPath = implode('/', $commands);
-        $signature = $secret ? self::sign("$commandPath/$original", $secret) : 'unsafe';
+        if (count($commands) > 0) {
+            $commandPath = implode('/', $commands);
+            $imgPath = sprintf('%s/%s', $commandPath, $original);
+        } else {
+            $imgPath = $original;
+        }
+
+        $signature = $secret ? self::sign($imgPath, $secret) : 'unsafe';
 
         return sprintf(
-            '%s/%s/%s/%s',
+            '%s/%s/%s',
             $server,
             $signature,
-            $commandPath,
-            $original
+            $imgPath
         );
     }
 
