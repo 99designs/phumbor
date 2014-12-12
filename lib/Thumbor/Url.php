@@ -37,13 +37,10 @@ class Url
      */
     public function stringify($server, $secret, $original, $commands)
     {
-        if(count($commands) > 0)
-        {
+        if (count($commands) > 0) {
             $commandPath = implode('/', $commands);
             $imgPath = sprintf('%s/%s', $commandPath, $original);
-        }
-        else
-        {
+        } else {
             $imgPath = $original;
         }
 
