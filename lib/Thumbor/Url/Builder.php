@@ -25,6 +25,15 @@ use Thumbor\Url;
  * representation of the URL.
  *
  * See https://github.com/globocom/thumbor/wiki/Usage for all available options.
+ * @method Builder trim($colourSource = null)
+ * @method Builder crop($topLeftX, $topLeftY, $bottomRightX, $bottomRightY)
+ * @method Builder fitIn($width, $height)
+ * @method Builder resize($width, $height)
+ * @method Builder halign($halign)
+ * @method Builder valign($valign)
+ * @method Builder smartCrop($smartCrop)
+ * @method Builder addFilter($filter, $args, $_ = null)
+ * @method Builder metadataOnly($metadataOnly)
  */
 class Builder
 {
