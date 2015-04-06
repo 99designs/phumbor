@@ -36,8 +36,17 @@ class CommandSet
     }
 
     /**
+     * Resize the image to fit by smallest side in a box of the specified dimensions. 
+     * Overrides any previous call to `fullFitIn`, `fitIn` or `resize`.
+     */
+    public function fullFitIn($width, $height)
+    {
+    	$this->resize = "full-fit-in/{$width}x{$height}";
+    }
+    
+    /**
      * Resize the image to fit in a box of the specified dimensions. Overrides
-     * any previous call to `fitIn` or `resize`.
+     * any previous call to `fullFitIn`, `fitIn` or `resize`.
      */
     public function fitIn($width, $height)
     {
@@ -46,7 +55,7 @@ class CommandSet
 
     /**
      * Resize the image to the specified dimensions. Overrides any previous call
-     * to `fitIn` or `resize`.
+     * to `fullFitIn`, `fitIn` or `resize`.
      *
      * Use a value of 0 for proportional resizing. E.g. for a 640 x 480 image,
      * `->size(320, 0)` yields a 320 x 240 thumbnail.
