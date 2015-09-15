@@ -21,10 +21,16 @@ class CommandSet
      * Trim surrounding space from the thumbnail. The top-left corner of the
      * image is assumed to contain the background colour. To specify otherwise,
      * pass either 'top-left' or 'bottom-right' as the $colourSource argument.
+     * For tolerance the euclidian distance between the colors of the reference pixel
+     * and the surrounding pixels is used. If the distance is within the
+     * tolerance they'll get trimmed. For a RGB image the tolerance would
+     * be within the range 0-442
      */
-    public function trim($colourSource = null)
+    public function trim($colourSource = null, $tolerance = null)
     {
-        $this->trim = 'trim' . ($colourSource ? ":$colourSource" : '');
+        $this->trim = 'trim';
+        $this->trim .= $colourSource ? ":$colourSource" : '';
+        $this->trim .= $tolerance ? ":$tolerance" : '';
     }
 
     /**

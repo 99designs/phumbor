@@ -28,6 +28,11 @@ class CommandSetTest extends TestCase
             array('trim:bottom-right'),
             $commandSet->toArray()
         );
+        $commandSet->trim('top-left', 50);
+        $this->assertEquals(
+            array('trim:top-left:50'),
+            $commandSet->toArray()
+        );
     }
 
     public function testCrop()
