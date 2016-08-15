@@ -29,6 +29,18 @@ class BuilderTest extends TestCase
         $this->assertEquals($expected, $url);
     }
 
+    public function testDomainShardToString()
+    {
+        $url = (string) Builder::construct(array('http://thumbor1.example.com','http://thumbor2.example.com'), 'butts', 'http://example.com/llamas.jpg')
+            ->fitIn(320, 240)
+            ->smartCrop(true)
+            ->addFilter('brightness', 42);
+
+        $expected = 'http://thumbor1.example.com/dgzk7MVde2RUq5Hbq40FvfRdno0=/fit-in/320x240/smart/filters:brightness(42)/http://example.com/llamas.jpg';
+
+        $this->assertEquals($expected, $url);
+    }
+
     public function testToString()
     {
         $url = (string) Builder::construct('http://thumbor.example.com', 'butts', 'http://example.com/llamas.jpg')
