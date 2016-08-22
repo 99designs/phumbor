@@ -24,17 +24,31 @@ class BuilderFactory
     private $server;
     private $secret;
 
+    /**
+     * @param $server
+     * @param null $secret
+     * @return BuilderFactory
+     */
     public static function construct($server, $secret=null)
     {
         return new self($server, $secret);
     }
 
+    /**
+     * BuilderFactory constructor.
+     * @param $server
+     * @param null $secret
+     */
     public function __construct($server, $secret=null)
     {
         $this->server = $server;
         $this->secret = $secret;
     }
 
+    /**
+     * @param $original
+     * @return Builder
+     */
     public function url($original)
     {
         return Builder::construct($this->server, $this->secret, $original);
