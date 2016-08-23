@@ -25,8 +25,8 @@ class BuilderFactory
     private $secret;
 
     /**
-     * @param $server
-     * @param null $secret
+     * @param string $server
+     * @param string|null $secret
      * @return BuilderFactory
      */
     public static function construct($server, $secret=null)
@@ -35,9 +35,8 @@ class BuilderFactory
     }
 
     /**
-     * BuilderFactory constructor.
-     * @param $server
-     * @param null $secret
+     * @param string $server
+     * @param string|null $secret
      */
     public function __construct($server, $secret=null)
     {
@@ -46,7 +45,7 @@ class BuilderFactory
     }
 
     /**
-     * @param $original
+     * @param string $original
      * @return Builder
      */
     public function url($original)
