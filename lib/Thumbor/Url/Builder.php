@@ -55,6 +55,11 @@ class Builder
         $this->commands = new CommandSet();
     }
 
+    public function __clone()
+    {
+        $this->commands = clone $this->commands;
+    }
+
     // Proxy remaining method calls to CommandSet
     public function __call($method, $args)
     {
