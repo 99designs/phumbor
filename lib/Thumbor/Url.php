@@ -20,7 +20,7 @@ class Url
     {
         $this->server = $server;
         $this->secret = $secret;
-        $this->original = $original;
+        $this->original = rawurlencode($original);
         $this->commands = $commands;
     }
 
