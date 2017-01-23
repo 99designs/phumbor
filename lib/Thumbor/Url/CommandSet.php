@@ -127,6 +127,9 @@ class CommandSet
     public function toArray()
     {
         $commands = array();
+        
+        if ($this->metadataOnly)
+            $commands []= 'meta';
 
         $maybeAppend = function ($command) use (&$commands) {
             if ($command) $commands []= (string) $command;
