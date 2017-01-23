@@ -30,10 +30,10 @@ class Url
      *
      * See https://github.com/globocom/thumbor/wiki/Usage for available $commands.
      *
-     * @param string $server   Thumbor server
-     * @param string $secret   shared secret key (may be blank/null)
-     * @param string $original URL of original image
-     * @param array  $commands array of Thumbor commands
+     * @param string|array $server   Thumbor server(s)
+     * @param string       $secret   shared secret key (may be blank/null)
+     * @param string       $original URL of original image
+     * @param array        $commands array of Thumbor commands
      */
     public function stringify($server, $secret, $original, $commands)
     {
@@ -42,6 +42,11 @@ class Url
             $imgPath = sprintf('%s/%s', $commandPath, $original);
         } else {
             $imgPath = $original;
+        }
+
+        if(is_array($server)) {
+            $index = strlen($imgPath) % count($server);
+            $server = $server[$index];
         }
 
         $signature = $secret ? self::sign($imgPath, $secret) : 'unsafe';
