@@ -50,6 +50,7 @@ class BuilderFactory
      */
     public function url($original)
     {
+		$original = str_replace('+', ' ', $original);
         return Builder::construct($this->server, $this->secret, $original);
     }
 }
