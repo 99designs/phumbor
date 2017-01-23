@@ -112,6 +112,14 @@ class CommandSet
     }
 
     /**
+     * Reset all currently applied filters to allow re-usage of init'ed image
+     */
+    public function clearFilters()
+    {
+    	$this->filters = array();
+    }
+    
+    /**
      * Specify that JSON metadata should be returned instead of the thumbnailed
      * image.
      * @param bool $metadataOnly
