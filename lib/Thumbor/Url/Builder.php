@@ -28,6 +28,7 @@ use Thumbor\Url;
  * @method Builder trim($colourSource = null)
  * @method Builder crop($topLeftX, $topLeftY, $bottomRightX, $bottomRightY)
  * @method Builder fitIn($width, $height)
+ * @method Builder fullFitIn($width, $height) 
  * @method Builder resize($width, $height)
  * @method Builder halign($halign)
  * @method Builder valign($valign)
