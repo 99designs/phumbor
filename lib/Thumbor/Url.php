@@ -20,8 +20,27 @@ class Url
     {
         $this->server = $server;
         $this->secret = $secret;
-        $this->original = implode('/', array_map('rawurlencode', explode('/', $original)));
+        $this->original = self::parseOriginalUrl($original);
         $this->commands = $commands;
+    }
+
+    /**
+     * Produce a encoded URL.
+     * @param string $original URL of original image
+     * @return string
+     */
+    private function parseOriginalUrl($original)
+    {
+        $scheme = parse_url($original, PHP_URL_SCHEME);
+        if ($scheme) {
+            $scheme .= '://';
+            $original = str_replace($scheme, '', $original);
+        }
+
+        $original = implode('/', array_map('rawurlencode', explode('/', $original)));
+        $original = $scheme . $original;
+
+        return $original;
     }
 
     /**
