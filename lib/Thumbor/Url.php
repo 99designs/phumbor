@@ -20,7 +20,7 @@ class Url
     {
         $this->server = $server;
         $this->secret = $secret;
-        $this->original = $original;
+        $this->original = implode('/', array_map('rawurlencode', explode('/', $original)));
         $this->commands = $commands;
     }
 
