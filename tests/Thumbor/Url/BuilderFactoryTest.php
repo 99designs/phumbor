@@ -19,4 +19,17 @@ class BuilderFactoryTest extends TestCase
 
         $this->assertEquals($expected, $builder);
     }
+
+    public function testBaseUrl()
+    {
+        $server = 'http://thumbor.example.com';
+        $secret = 'butts';
+        $baseUrl = 'http://example.com';
+        $original = 'llamas.jpg';
+
+        $builder = BuilderFactory::construct($server, $secret)->baseUrl($baseUrl)->url($original);
+        $expected = Builder::construct($server, $secret, "$baseUrl/$original");
+
+        $this->assertEquals($expected, $builder);
+    }
 }
