@@ -25,6 +25,11 @@ class BuilderFactory
     private $secret;
 
     /**
+     * @var string
+     */
+    private $baseUrl;
+
+    /**
      * @param string $server
      * @param string|null $secret
      * @return BuilderFactory
@@ -45,11 +50,24 @@ class BuilderFactory
     }
 
     /**
+     * @param $url
+     * @return $this
+     */
+    public function baseUrl($url)
+    {
+        $this->baseUrl = $url;
+        return $this;
+    }
+
+    /**
      * @param string $original
      * @return Builder
      */
     public function url($original)
     {
+        if (!is_null($this->baseUrl)) {
+            $original = "{$this->baseUrl}/$original";
+        }
         return Builder::construct($this->server, $this->secret, $original);
     }
 }
