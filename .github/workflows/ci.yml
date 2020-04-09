@@ -1,0 +1,47 @@
+name: tests
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: |
+          if [ -n "$GH_AUTH_TOKEN" ]; then composer config github-oauth.github.com ${GH_AUTH_TOKEN}; fi;
+          composer install --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist
+
+      - name: PHP Unit
+        run: vendor/bin/phpunit
+
+      - name: PHP Syntax Checker (Lint)
+        uses: StephaneBour/actions-php-lint@7.3
+        with:
+          dir: lib
+
+      - name: PHP CS Fixer
+        uses: StephaneBour/actions-php-cs-fixer@1.0
+        with:
+          dir: "./lib"
+
+      - name: PHP Copy Paste Detector
+        uses: StephaneBour/actions-php-cpd@1.0
+        with:
+          dir: "./lib"
