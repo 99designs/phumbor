@@ -25,6 +25,7 @@ use Thumbor\Url;
  * representation of the URL.
  *
  * See https://github.com/globocom/thumbor/wiki/Usage for all available options.
+ *
  * @method Builder trim($colourSource = null)
  * @method Builder crop($topLeftX, $topLeftY, $bottomRightX, $bottomRightY)
  * @method Builder fitIn($width, $height)
@@ -63,19 +64,23 @@ class Builder
     // Proxy remaining method calls to CommandSet
     public function __call($method, $args)
     {
-        $proxied = array($this->commands, $method);
-        if (!is_callable($proxied)) {
-            throw new Exception(sprintf(
+        $proxied = [$this->commands, $method];
+        if (! \is_callable($proxied)) {
+            throw new Exception(\sprintf(
                 'Method "%s" not found for %s',
                 $method,
-                get_class($this->commands)
+                \get_class($this->commands)
             ));
         }
-        call_user_func_array($proxied, $args);
+        \call_user_func_array($proxied, $args);
+
         return $this;
     }
 
-    public function build()
+    /**
+     * @return Url
+     */
+    public function build(): Url
     {
         return new Url(
             $this->server,
@@ -85,7 +90,10 @@ class Builder
         );
     }
 
-    public function __toString()
+    /**
+     * @return string
+     */
+    public function __toString(): string
     {
         return (string) $this->build();
     }

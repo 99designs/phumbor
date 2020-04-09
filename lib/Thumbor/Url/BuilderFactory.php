@@ -25,20 +25,21 @@ class BuilderFactory
     private $secret;
 
     /**
-     * @param string $server
+     * @param string      $server
      * @param string|null $secret
+     *
      * @return BuilderFactory
      */
-    public static function construct($server, $secret=null)
+    public static function construct($server, $secret = null)
     {
         return new self($server, $secret);
     }
 
     /**
-     * @param string $server
+     * @param string      $server
      * @param string|null $secret
      */
-    public function __construct($server, $secret=null)
+    public function __construct($server, $secret = null)
     {
         $this->server = $server;
         $this->secret = $secret;
@@ -46,9 +47,10 @@ class BuilderFactory
 
     /**
      * @param string $original
+     *
      * @return Builder
      */
-    public function url($original)
+    public function url($original): Builder
     {
         return Builder::construct($this->server, $this->secret, $original);
     }

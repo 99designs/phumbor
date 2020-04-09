@@ -3,7 +3,8 @@
 namespace Thumbor;
 
 /**
- * Generate URLs that point to a Thumbor server
+ * Generate URLs that point to a Thumbor server.
+ *
  * @see https://github.com/globocom/thumbor
  */
 class Url
@@ -14,7 +15,7 @@ class Url
     private $commands;
 
     /**
-     * See stringify()
+     * See stringify().
      */
     public function __construct($server, $secret, $original, $commands)
     {
@@ -34,19 +35,21 @@ class Url
      * @param string $secret   shared secret key (may be blank/null)
      * @param string $original URL of original image
      * @param array  $commands array of Thumbor commands
+     *
+     * @return string
      */
-    public function stringify($server, $secret, $original, $commands)
+    public function stringify($server, $secret, $original, $commands): string
     {
-        if (count($commands) > 0) {
-            $commandPath = implode('/', $commands);
-            $imgPath = sprintf('%s/%s', $commandPath, $original);
+        if (\count($commands) > 0) {
+            $commandPath = \implode('/', $commands);
+            $imgPath = \sprintf('%s/%s', $commandPath, $original);
         } else {
             $imgPath = $original;
         }
 
         $signature = $secret ? self::sign($imgPath, $secret) : 'unsafe';
 
-        return sprintf(
+        return \sprintf(
             '%s/%s/%s',
             $server,
             $signature,
@@ -56,22 +59,27 @@ class Url
 
     /**
      * Sign a message using a shared secret key, per
-     * https://github.com/globocom/thumbor/wiki/Libraries
+     * https://github.com/globocom/thumbor/wiki/Libraries.
      *
      * @param string $msg
      * @param string $secret
+     *
      * @return string
      */
-    public static function sign($msg, $secret)
+    public static function sign($msg, $secret): string
     {
-        $signature = hash_hmac("sha1", $msg, $secret, true);
-        return strtr(
-            base64_encode($signature),
+        $signature = \hash_hmac('sha1', $msg, $secret, true);
+
+        return \strtr(
+            \base64_encode($signature),
             '/+', '_-'
         );
     }
 
-    public function __toString()
+    /**
+     * @return string
+     */
+    public function __toString(): string
     {
         return $this->stringify(
             $this->server,
