@@ -1,23 +1,31 @@
 {
-    "name": "99designs/phumbor",
-    "description": "A minimal Thumbor library for PHP",
-    "homepage": "https://github.com/99designs/phumbor",
-    "keywords": [
-        "php", "thumbor", "thumbnails", "99designs"
-    ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Stuart Campbell",
-            "email": "stuart.campbell@99designs.com"
-        }
-    ],
-    "require": {
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~3.7.0"
-    },
-    "autoload": {
-        "psr-0": {"Thumbor": "lib"}
+  "name": "welcoming/phumbor",
+  "description": "A minimal Thumbor library for PHP",
+  "homepage": "https://github.com/WelcomingGroup/phumbor",
+  "keywords": [
+    "php",
+    "thumbor",
+    "thumbnails",
+    "99designs"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Stuart Campbell",
+      "email": "stuart.campbell@99designs.com"
     }
+  ],
+  "replace": {
+    "99designs/phumbor": "*"
+  },
+  "require": {
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~3.7.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "Thumbor": "lib"
+    }
+  }
 }
