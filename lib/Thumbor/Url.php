@@ -40,11 +40,11 @@ class Url
      */
     public function stringify($server, $secret, $original, $commands): string
     {
-        if (\count($commands) > 0) {
-            $commandPath = \implode('/', $commands);
-            $imgPath = \sprintf('%s/%s', $commandPath, $original);
+        if (count($commands) > 0) {
+            $commandPath = implode('/', $commands);
+            $imgPath = sprintf('%s/%s', $commandPath, rawurlencode($original));
         } else {
-            $imgPath = $original;
+            $imgPath = rawurlencode($original);
         }
 
         $signature = $secret ? self::sign($imgPath, $secret) : 'unsafe';
