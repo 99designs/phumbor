@@ -15,7 +15,7 @@
     "require": {
     },
     "require-dev": {
-        "phpunit/phpunit": "~3.7.0"
+        "phpunit/phpunit": "~8.5.52"
     },
     "autoload": {
         "psr-0": {"Thumbor": "lib"}
